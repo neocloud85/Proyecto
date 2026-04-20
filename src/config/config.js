@@ -15,7 +15,7 @@ export const DB_PASSWORD = process.env.DB_PASSWORD || '';
 export const DB_NAME = process.env.DB_NAME || 'bookverse';
 
 // JWT
-export const JWT_SECRET = process.env.JWT_SECRET || 'cambiar_secreto_en_produccion';
+export const JWT_SECRET = process.env.JWT_SECRET ;
 export const JWT_EXPIRATION = process.env.JWT_EXPIRATION || '7d';
 
 // CORS

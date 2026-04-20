@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import { authRoutes } from './routes/auth.routes.js';
+import {usuariosRoutes} from './routes/usuarios.routes.js';
 import { PORT, CORS_ORIGIN } from './config/config.js';
 
 const app = express();
@@ -18,7 +19,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api', authRoutes);
-
+app.use('/api/usuarios', usuariosRoutes);
 // Ruta raíz
 app.get('/', (req, res) => {
     res.json({
@@ -35,5 +36,5 @@ app.use((req, res) => {
 
 // Servidor
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

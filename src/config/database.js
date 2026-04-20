@@ -3,7 +3,7 @@ import mysql from 'mysql2/promise';
 import { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } from './config.js';
 
 // Configuración del pool de conexiones
-const pool = mysql.createPool({
+export const pool = mysql.createPool({
   host: DB_HOST,
   port: DB_PORT,
   user: DB_USER,
@@ -20,11 +20,11 @@ const pool = mysql.createPool({
 const testConnection = async () => {
   try {
     const connection = await pool.getConnection();
-    console.log('✅ Conexión a MySQL exitosa');
+    console.log('Conexión a MySQL exitosa');
     connection.release();
     return true;
   } catch (error) {
-    console.error('❌ Error conectando a MySQL:', error);
+    console.error('Error conectando a MySQL:', error);
     return false;
   }
 };
