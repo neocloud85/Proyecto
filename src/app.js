@@ -3,7 +3,15 @@ import express from 'express';
 import cors from 'cors';
 import { authRoutes } from './routes/auth.routes.js';
 import {usuariosRoutes} from './routes/usuarios.routes.js';
+import { resenasRoutes } from './routes/resenas.routes.js';
+import { recomendacionesRoutes } from './routes/recomendaciones.route.js';
+import { amistadRoutes } from './routes/amistad.routes.js';
+import { librosRoutes } from './routes/libros.routes.js';
+import { categoriasRoutes } from './routes/categorias.routes.js';
+import { booksProxyRoutes } from './routes/booksProxy.routes.js';
 import { PORT, CORS_ORIGIN } from './config/config.js';
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -20,6 +28,12 @@ app.use(express.json());
 // Rutas
 app.use('/api', authRoutes);
 app.use('/api/usuarios', usuariosRoutes);
+app.use('/api/resenas', resenasRoutes);
+app.use('/api/recomendaciones', recomendacionesRoutes);
+app.use('/api/amistad', amistadRoutes);
+app.use('/api/libros', librosRoutes);
+app.use('/api/categorias', categoriasRoutes);
+app.use('/api/books', booksProxyRoutes);
 // Ruta raíz
 app.get('/', (req, res) => {
     res.json({
@@ -37,4 +51,6 @@ app.use((req, res) => {
 // Servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log("API KEY:", process.env.GOOGLE_BOOKS_KEY);
+
 });
