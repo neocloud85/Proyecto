@@ -1,0 +1,28 @@
+<h1>Mis reseñas publicadas</h1>
+
+@if (loading()) {
+  <p class="loading">Cargando reseñas...</p>
+}
+
+@for (r of reviews(); track r.id) {
+  <div class="review-card">
+    <h3>{{ r.titulo }}</h3>
+    <p class="author">{{ r.autor }}</p>
+
+    <p class="rating">
+      ⭐ {{ r.puntuacion }} / 5
+    </p>
+
+    @if (r.texto) {
+      <p class="text">{{ r.texto }}</p>
+    }
+
+    @if (!r.texto) {
+      <p class="no-text">Sin comentario</p>
+    }
+  </div>
+}
+
+@if (!loading() && reviews().length === 0) {
+  <p class="empty">Todavía no has publicado ninguna reseña.</p>
+}

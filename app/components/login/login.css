@@ -1,0 +1,60 @@
+/* Centrar todo el contenido en pantalla */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f6fa;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor del formulario */
+.login-container {
+  background: white;
+  padding: 2rem;
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Título */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Botón */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #0078ff;
+  border: none;
+  color: white;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #005fcc;
+}
+
+/* Mensaje de error */
+.error {
+  margin-top: 10px;
+  color: #d9534f;
+  text-align: center;
+  font-size: 14px;
+}

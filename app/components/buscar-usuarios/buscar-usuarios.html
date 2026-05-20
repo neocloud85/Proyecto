@@ -1,0 +1,33 @@
+<h2>Buscar usuarios</h2>
+
+<input
+  type="text"
+  [(ngModel)]="query"
+  (input)="onInput()"
+  placeholder="Escribe un nombre..."
+  class="input"
+/>
+
+@if (loading) {
+  <p>Cargando...</p>
+}
+
+@if (!loading && resultados.length === 0 && query.length >= 2) {
+  <p>No se encontraron usuarios.</p>
+}
+
+@if (resultados.length > 0) {
+  <div class="resultados">
+    @for (u of resultados; track u.id) {
+      <div class="usuario-card">
+        <div class="info">
+          <strong>{{ u.nombre }}</strong>
+        </div>
+
+        <button (click)="enviarSolicitud(u.id)">
+          Enviar solicitud
+        </button>
+      </div>
+    }
+  </div>
+}

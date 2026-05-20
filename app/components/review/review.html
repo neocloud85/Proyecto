@@ -1,0 +1,16 @@
+<h2>Publicar reseña para {{ book().titulo }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <label>Puntuación</label>
+  <select formControlName="puntuacion">
+    @for (n of [1,2,3,4,5]; track n) {
+      <option [value]="n">{{ n }}</option>
+    }
+  </select>
+
+  <label>Texto (opcional)</label>
+  <textarea formControlName="texto" placeholder="Escribe tu reseña..."></textarea>
+
+  <button type="submit">Publicar</button>
+</form>

@@ -1,0 +1,26 @@
+<h2>Solicitudes de amistad</h2>
+
+@if (loading) {
+  <p>Cargando solicitudes...</p>
+}
+
+@if (!loading && solicitudes.length === 0) {
+  <p>No tienes solicitudes pendientes.</p>
+}
+
+@if (solicitudes.length > 0) {
+  <div class="lista">
+    @for (s of solicitudes; track s.id) {
+      <div class="solicitud-card">
+        <div class="info">
+          <strong>{{ s.emisor }}</strong>
+        </div>
+
+        <div class="acciones">
+          <button class="aceptar" (click)="aceptar(s.id)">Aceptar</button>
+          <button class="rechazar" (click)="rechazar(s.id)">Rechazar</button>
+        </div>
+      </div>
+    }
+  </div>
+}

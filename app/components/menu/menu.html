@@ -1,0 +1,11 @@
+<nav class="menu">
+  <a routerLink="/buscar-usuarios">Buscar usuarios</a>
+
+  <a routerLink="/solicitudes" class="solicitudes-link">
+    Solicitudes
+
+    @if (solicitudesCount > 0) {
+      <span class="badge">{{ solicitudesCount }}</span>
+    }
+  </a>
+</nav>

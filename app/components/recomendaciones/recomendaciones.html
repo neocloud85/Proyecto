@@ -1,0 +1,38 @@
+<div class="recomendados-container">
+
+  <h1>Recomendaciones para ti</h1>
+
+  @if (loading()) {
+    <p class="loading">Cargando recomendaciones...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!loading() && recomendaciones().length === 0 && !error()) {
+    <p class="empty">
+      Aún no hay recomendaciones.  
+      Reseña algunos libros con puntuación alta para obtener sugerencias.
+    </p>
+  }
+
+  @if (recomendaciones().length > 0) {
+    <div class="grid">
+      @for (libro of recomendaciones(); track libro.id) {
+        <div class="card">
+          <img [src]="libro.imagen" alt="Portada del libro">
+
+          <h3>{{ libro.titulo }}</h3>
+          <p class="autor">{{ libro.autor }}</p>
+
+          <a [routerLink]="['/book', libro.id]" class="btn">
+            Ver detalles
+          </a>
+        </div>
+      }
+    </div>
+  }
+
+</div>
+

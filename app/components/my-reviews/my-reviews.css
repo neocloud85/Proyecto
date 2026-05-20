@@ -1,0 +1,61 @@
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.empty {
+  color: #777;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform .2s ease;
+}
+
+.review-card:hover {
+  transform: scale(1.02);
+}
+
+.review-card h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.author {
+  margin: 4px 0 10px;
+  color: #555;
+  font-size: 15px;
+}
+
+.rating {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff9800;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.no-text {
+  font-size: 15px;
+  color: #888;
+  font-style: italic;
+}

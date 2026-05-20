@@ -1,0 +1,53 @@
+<div class="book-details-container">
+
+  @if (loading()) {
+    <div class="loading">Cargando libro...</div>
+  }
+
+  @if (error()) {
+    <div class="error">{{ error() }}</div>
+  }
+
+  @if (book()) {
+    <div class="details-container">
+
+      <div class="cover-container">
+        <img class="cover"
+            [src]="book().volumeInfo.imageLinks?.thumbnail"
+            alt="Portada">
+        </div>
+
+
+      <div class="info">
+        <h1>{{ book().volumeInfo.title }}</h1>
+        <h3>{{ book().volumeInfo.authors?.join(', ') }}</h3>
+
+        <p><strong>Publicado:</strong> {{ book().volumeInfo.publishedDate }}</p>
+        <p><strong>Editorial:</strong> {{ book().volumeInfo.publisher }}</p>
+
+        <div class="description" style="white-space: pre-line;">
+        {{ getShortDescription(book().volumeInfo.description) }}
+        </div>
+
+        <button class="toggle-btn" (click)="toggleDescription()">
+        {{ expanded() ? 'Leer menos' : 'Leer más' }}
+        </button>
+
+          @if (!hasReview()) {
+      <button (click)="openReview()">Publicar reseña</button>
+    } @else {
+      <p class="ya-reseñado">Ya has reseñado este libro</p>
+    }
+
+
+      @if (showReview()) {
+      <app-review [book]="book()"></app-review>
+      }
+
+        <a routerLink="/dashboard" class="back-btn">Volver al catálogo</a>
+      </div>
+
+    </div>
+  }
+
+</div>

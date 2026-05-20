@@ -1,0 +1,166 @@
+/* ------------------------------
+   TÍTULOS Y TEXTOS
+------------------------------ */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.error {
+  color: #d9534f;
+}
+
+/* ------------------------------
+   CATÁLOGO DE LIBROS
+------------------------------ */
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.book-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
+  transition: transform .2s ease;
+}
+
+.book-card:hover {
+  transform: scale(1.05);
+}
+
+.book-card img {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* ------------------------------
+   BOTONES
+------------------------------ */
+.back-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 16px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ------------------------------
+   SUGERENCIAS
+------------------------------ */
+.suggestions {
+  width: 300px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 10;
+}
+
+.suggestion {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion:hover {
+  background: #f0f0f0;
+}
+
+/* ------------------------------
+   MENÚ SUPERIOR
+------------------------------ */
+.catalog-menu {
+  width: 100%;
+  padding: 12px 20px;
+  background: #1976d2;
+  border-radius: 8px;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.catalog-menu a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.catalog-menu a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   TOP LIBROS
+------------------------------ */
+.top-libros {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.top-card {
+  min-width: 150px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* ------------------------------
+   CATEGORÍAS GRANDES (GRUPOS)
+------------------------------ */
+.grupos-container {
+  display: flex;
+  flex-wrap: wrap;     /* ⭐ Para que NO salgan una debajo de otra */
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.categoria-grupo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.categoria-grupo:hover {
+  background: #e8e8e8;
+}
+
+.categoria-grupo input {
+  cursor: pointer;
+}
+
+.categoria-grupo.activa {
+  background: #d9eaff;
+  border-color: #4a90e2;
+}

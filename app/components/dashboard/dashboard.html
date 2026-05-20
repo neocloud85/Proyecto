@@ -1,0 +1,104 @@
+<nav class="catalog-menu">
+  <a routerLink="/mis-resenas">Mis reseñas publicadas</a>
+  <a routerLink="/recomendados">Recomendaciones para ti</a>
+  <a routerLink="/resenas-usuarios">Reseñas</a>
+</nav>
+
+<div class="dashboard-container">
+
+  <h1>Catálogo de libros</h1>
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      placeholder="Buscar libro por título..."
+      [value]="searchTerm()"
+      (input)="onType($any($event.target).value)"
+    >
+    <button (click)="onSearch()">Buscar</button>
+
+    <!-- ⭐ SELECTOR SOLO DE CATEGORÍAS GRANDES -->
+    <div class="grupos-container">
+      @for (grupo of gruposLista; track grupo) {
+        <div 
+          class="categoria-grupo"
+          (click)="toggleCategoria(grupo)"
+          [class.activa]="categoriasSeleccionadas().includes(grupo)"
+        >
+          <input 
+            type="checkbox"
+            [checked]="categoriasSeleccionadas().includes(grupo)"
+          >
+          <span>{{ grupo }}</span>
+        </div>
+      }
+    </div>
+
+  </div>
+
+  @if (suggestions().length > 0) {
+    <div class="suggestions">
+      @for (s of suggestions(); track s.id) {
+        <div class="suggestion" (click)="selectSuggestion(s.volumeInfo.title)">
+          {{ s.volumeInfo.title }}
+        </div>
+      }
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error">{{ error() }}</div>
+  }
+
+  <h2>⭐ Libros mejor valorados</h2>
+
+  @if (loadingTop()) {
+    <p>Cargando mejores libros...</p>
+  }
+
+  @if (!loadingTop() && topLibros().length === 0) {
+    <p>No hay suficientes reseñas para mostrar rankings.</p>
+  }
+
+  @if (topLibros().length > 0) {
+    <div class="top-libros">
+      @for (libro of topLibros(); track libro.id) {
+        <div class="top-card" (click)="goToDetails(libro.id)">
+          <img [src]="libro.portada" alt="Portada">
+          <h3>{{ libro.titulo }}</h3>
+          <p>⭐ {{ libro.nota_media | number:'1.1-2' }}</p>
+          <p>{{ libro.total_resenas }} reseñas</p>
+        </div>
+      }
+    </div>
+  }
+
+  <h2>Catálogo</h2>
+  <div class="catalog">
+
+    @for (book of catalogVisible(); track book.id) {
+      <div class="book-card" (click)="goToDetails(book.id)">
+        <img [src]="book.volumeInfo.imageLinks?.thumbnail" alt="Portada">
+        <h3>{{ book.volumeInfo.title }}</h3>
+        <p>{{ book.volumeInfo.authors?.join(', ') }}</p>
+      </div>
+    }
+
+    @empty {
+      <p class="empty">No se encontraron libros.</p>
+    }
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Cargando...</div>
+  }
+
+  @if (!loading() && !searching() && !error()) {
+    <button class="load-more" (click)="verMas()">Ver más</button>
+  }
+
+  <button class="back-btn" (click)="goBack()">Volver atrás</button>
+  <button class="back-btn" (click)="goHome()">Volver a la página principal</button>
+
+</div>

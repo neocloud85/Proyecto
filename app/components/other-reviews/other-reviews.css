@@ -1,0 +1,77 @@
+/* Contenedor general */
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Mensajes de carga o vacío */
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Tarjeta de reseña */
+.review-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-left: 5px solid #4a90e2;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* Título del libro */
+.review-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: #222;
+}
+
+/* Texto de información */
+.review-card p {
+  margin: 0.3rem 0;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* Estrellas */
+.stars {
+  margin: 0.5rem 0;
+}
+
+.stars span {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.stars .filled {
+  color: #f5b301;
+}
+
+/* Texto de la reseña */
+.review-text {
+  margin-top: 0.8rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .review-card {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

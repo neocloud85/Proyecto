@@ -1,0 +1,18 @@
+<div class="register-container">
+  <h2>Crear cuenta</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="text" formControlName="nombre" placeholder="Nombre">
+    <input type="email" formControlName="correo" placeholder="Correo">
+    <input type="password" formControlName="contrasena" placeholder="Contraseña">
+
+    <button type="submit">Registrarse</button>
+  </form>
+<button type="button" class="back-btn" (click)="goBack()">Volver atrás</button>
+
+@if (errorMsg()) {
+  <p class="error">{{ errorMsg() }}</p>
+}
+
+</div>
+
